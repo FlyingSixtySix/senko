@@ -19,8 +19,12 @@ class Fun(commands.Cog):
     @option(name='dice', description='Number of dice to roll')
     @option(name='sides', description='Number of sides on each die')
     async def roll(self, ctx, dice: int = 1, sides: int = 999):
+        if dice < 1:
+            return await ctx.respond('You cannot roll less than 1 die.')
+        if sides < 2:
+            return await ctx.respond('You cannot roll a die with less than 2 sides.')
         if dice > 2000:
-            return await ctx.respond('You cannot roll more than 2000 dice at once.')
+            return await ctx.respond('You cannot roll more than 2000 die at once.')
         with ThreadPoolExecutor() as executor:
             futures = [executor.submit(self._roll_dice, sides) for _ in range(dice)]
 
