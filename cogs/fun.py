@@ -18,7 +18,7 @@ class Fun(commands.Cog):
     @bridge.bridge_command(guild_ids=command_guilds, description='Rolls dice')
     @option(name='dice', description='Number of dice to roll')
     @option(name='sides', description='Number of sides on each die')
-    async def roll(self, ctx, dice: int = 1, sides: int = 999):
+    async def roll(self, ctx: bridge.BridgeContext, dice: int = 1, sides: int = 999):
         if dice < 1:
             return await ctx.respond('You cannot roll less than 1 die.')
         if sides < 2:
@@ -29,7 +29,7 @@ class Fun(commands.Cog):
             futures = [executor.submit(self._roll_dice, sides) for _ in range(dice)]
 
             rolls = [future.result() for future in futures]
-        response = 'You rolled: ' + ', '.join(rolls)
+        response = 'You rolled: **' + '**, **'.join(rolls) + '**'
         if len(response) > 2000:
             response = response[:1996] + ' ...'
         await ctx.respond(response)
