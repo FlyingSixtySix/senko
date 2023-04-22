@@ -1,0 +1,15 @@
+[discord]
+token = ""
+prefix = "!"
+
+[discord.ids]
+client = ""
+guilds = [ "" ]
+owner = ""
+
+[discord.activity]
+type = "listening"
+name = "mofu mofu"
+
+[openai]
+key = ""
