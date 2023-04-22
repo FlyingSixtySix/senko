@@ -53,7 +53,7 @@ class GPT(commands.Cog):
         self.conversations[ctx.author.id]['gpt_messages'].append({ 'role': 'system', 'content': content })
 
         content = '\n'.join(['> ' + line for line in content.split('\n')])
-        messages = [m.strip() for m in split_string_at_newlines(content, split_str='\n> \n')]
+        messages = [m.strip().rstrip('>') for m in split_string_at_newlines(content, split_str='\n> \n')]
 
         for message in messages:
             view = GPTView(timeout=360)
