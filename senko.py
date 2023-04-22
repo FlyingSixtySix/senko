@@ -1,4 +1,4 @@
-from discord.ext import commands
+from discord.ext import bridge
 from discord import Intents
 import os
 
@@ -7,7 +7,7 @@ from utils import config
 intents = Intents.default()
 intents.guild_messages = True
 intents.message_content = True
-bot = commands.Bot(command_prefix=config['discord']['prefix'], intents=intents)
+bot = bridge.Bot(command_prefix=config['discord']['prefix'], intents=intents)
 bot.config = config
 
 for f in os.listdir('cogs'):
