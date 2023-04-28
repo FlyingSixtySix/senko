@@ -37,7 +37,7 @@ class Fun(commands.Cog):
     @commands.command(description='Says something as the bot')
     async def sudo(self, ctx: commands.Context, *, message: str):
         print(f'{ctx.message.created_at} - {ctx.author} used sudo to say "{message}"')
-        await ctx.send(message)
+        await ctx.send(message, allowed_mentions=discord.AllowedMentions.none())
 
 
 def setup(bot):
