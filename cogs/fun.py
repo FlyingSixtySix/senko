@@ -34,6 +34,10 @@ class Fun(commands.Cog):
             response = response[:1996] + ' ...'
         await ctx.respond(response)
 
+    @commands.command(description='Says something as the bot')
+    async def sudo(self, ctx: commands.Context, *, message: str):
+        await ctx.send(message)
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))
